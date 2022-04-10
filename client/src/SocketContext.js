@@ -4,14 +4,14 @@ import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
-const socket = io('http://localhost:5000');
+const socket = io('https://hackstack22-video-chat.herokuapp.com/');
 
 const ContextProvider = ({ children }) => {
     const [callAccepted, setCallAccepted] = useState(false);
     const [callEnded, setCallEnded] = useState(false);
     const [stream, setStream] = useState();
     const [name, setName] = useState('');
-    const [call, setCall] = useState({});
+    const [call, setCall] = useState({isReceivingCall:false});
     const [me, setMe] = useState('');
 
     const myVideo = useRef();
@@ -34,6 +34,7 @@ const ContextProvider = ({ children }) => {
     }, []);
 
     const answerCall = () => {
+        setCallAccepted(true);
         const peer = new Peer({ initiator: false, trickle: false, stream });
 
         peer.on('signal', (data) => {
@@ -50,8 +51,11 @@ const ContextProvider = ({ children }) => {
     };
 
     const callUser = (id) => {
-        setCallAccepted(true);
-        const peer = new Peer({ initiator: true, trickle: false, stream });
+        const peer = new Peer({ initiator: true, trickle: false, stream }); 
+        if(id != "")
+        {call.isReceivingCall = true;}
+        console.log(call.isReceivingCall + "Check");
+        console.log(callAccepted + "Check2");
         peer.on('signal', (data) => {
             socket.emit('callUser', { userToCall: id, signalData: data, from: me, name });
         });

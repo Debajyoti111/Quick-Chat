@@ -22,7 +22,7 @@ export const Notifications = () => {
       </style>
     {
      (
-      !callEnded && callAccepted &&  <div>
+        call.isReceivingCall && (!callAccepted) &&  <div>
           <h1>{call.name || "Name"} is calling: </h1>
             <Button variant="primary" onClick={answerCall} size="xxl">
             Answer
