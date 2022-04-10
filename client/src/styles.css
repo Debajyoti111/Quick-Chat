@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #fff;
+    overflow-x: hidden;
+}
+.head-text{
+    text-align: center;
+    margin: 2% 0%;
+    font-size: 2.5rem;
+}
+.component-heading{
+    text-align: center;
+    font-size: 1.2rem;
+}
+.video{
+    padding: 10px;
+    margin: 15px;
+    border: 5px solid #c9c9ca;
+    background-color: #c9c9ca;
+    width:550px;
+    z-index: 100;
+    margin-bottom: 5%;
+}
+@media only screen and (max-width: 450px)
+{
+    .video{
+        width: 300px;
+    }
+    .column-item{
+        width:300px;
+    }
+}
+.column-item{
+    background-color: #fff;
+}
+.form-class{
+    text-align: center;
+    background-color: #c9c9ca;
+}
+.margin{
+    margin:5%;
+}
